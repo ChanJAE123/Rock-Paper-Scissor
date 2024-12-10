@@ -1,0 +1,29 @@
+import random
+
+print("Rock Paper Scissor Game")
+print("Rock, Paper, or Scissor? choose one! \n" )
+
+def rps():
+    user = input("BATO! BATO! PICK? ").strip().title()
+
+    if user not in (['Rock', 'rock', 'Paper', 'paper', 'Scissor', 'scissor']):
+        raise ValueError('Typo Input. Try Again!')
+
+    computer = random.choice(['Rock', 'Paper', 'Scissor'])
+
+    if user == computer:
+        return f"It\'s a tie! Both chose {user}" # or {computer}, either sa dalawa, logic
+    
+    if user_win(user, computer):
+        return f"You chose {user} and Computer chose {computer} \nYOU WON! "
+
+    return f"You chose {user} and Computer chose {computer} \nYOU LOSE! "
+
+def user_win(Player, Opponent):
+    if (Player == 'Rock' and Opponent == 'Scissor') or (Player == 'Scissor' and Opponent == 'Paper') \
+        or (Player == 'Paper' and Opponent == 'Rock'):
+        return True
+try:
+    print(rps())
+except ValueError as a:
+    print(a)
